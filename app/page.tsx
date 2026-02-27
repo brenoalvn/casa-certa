@@ -24,6 +24,8 @@ function brl(value: number) {
   return Number(value).toLocaleString("pt-BR");
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const { data: properties, error } = await supabaseServer
     .from("properties")
