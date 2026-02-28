@@ -1,4 +1,3 @@
-// app/admin/(protected)/imoveis/page.tsx
 import Link from "next/link";
 import { supabaseSSR } from "@/lib/supabase-ssr";
 
@@ -56,12 +55,19 @@ export default async function AdminImoveisPage() {
             {(properties ?? []).map((p: PropertyRow) => (
               <tr key={p.id} className="border-t">
                 <td className="px-4 py-3 font-medium">{p.title}</td>
-                <td className="px-4 py-3 text-zinc-600">{p.neighborhood}, {p.city}</td>
+                <td className="px-4 py-3 text-zinc-600">
+                  {p.neighborhood}, {p.city}
+                </td>
                 <td className="px-4 py-3">{p.purpose}</td>
-                <td className="px-4 py-3">R$ {Number(p.price).toLocaleString("pt-BR")}</td>
+                <td className="px-4 py-3">
+                  R$ {Number(p.price).toLocaleString("pt-BR")}
+                </td>
                 <td className="px-4 py-3">{p.status}</td>
                 <td className="px-4 py-3 text-right">
-                  <Link className="rounded-md border px-3 py-1.5 hover:bg-zinc-50" href={`/admin/imoveis/${p.id}`}>
+                  <Link
+                    className="rounded-md border px-3 py-1.5 hover:bg-zinc-50"
+                    href={`/admin/imoveis/${p.id}`}
+                  >
                     Editar
                   </Link>
                 </td>

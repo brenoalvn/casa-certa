@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { supabaseServer } from "@/lib/server";
 import { GalleryCarousel } from "./components/gallery-carousel";
+import { LeadCta } from "./components/lead-cta";
 
 
 type PageProps = {
@@ -143,23 +144,27 @@ export default async function ImovelDetalhePage({ params }: PageProps) {
 
         {/* Card Interessado */}
         <aside className="h-fit rounded-2xl border bg-white p-6">
-          <h3 className="text-2xl font-semibold">Interessado?</h3>
+                    <h3 className="text-2xl font-semibold">Interessado?</h3>
 
-          <a
-            className="mt-4 flex w-full items-center justify-center rounded-xl bg-emerald-700 px-4 py-3 font-semibold text-white"
-            href={`https://wa.me/55SEUNUMEROAQUI?text=${encodeURIComponent(
-              `Olá! Tenho interesse no imóvel: ${imovel.title ?? imovel.slug}`
-            )}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            WhatsApp
-          </a>
+                    <a
+                        className="mt-4 flex w-full items-center justify-center rounded-xl bg-emerald-700 px-4 py-3 font-semibold text-white"
+                        href={`https://wa.me/5567981442129?text=${encodeURIComponent(
+                        `Olá! Tenho interesse no imóvel: ${imovel.title ?? imovel.slug}`
+                        )}`}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        WhatsApp
+                    </a>
 
-          <button className="mt-3 w-full rounded-xl border px-4 py-3 font-semibold">
-            Solicitar detalhes
-          </button>
-        </aside>
+                    <LeadCta
+                        property={{
+                        id: imovel.id,
+                        title: imovel.title ?? imovel.slug,
+                        slug: imovel.slug,
+                        }}
+                    />
+                    </aside>
       </div>
     </main>
   );

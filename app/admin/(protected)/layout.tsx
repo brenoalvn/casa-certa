@@ -6,20 +6,19 @@ import { supabaseSSR } from "@/lib/supabase-ssr";
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const supabase = await supabaseSSR();
   const { data } = await supabase.auth.getUser();
-  if (!data.user) redirect("/admin/login");
-
+if (!data.user) redirect("/admin/login");  
   return (
     <div className="min-h-screen bg-[#faf7f2]">
       <header className="sticky top-0 z-20 border-b bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-6">
             <Link href="/admin" className="font-semibold">
-              Casa Certa <span className="text-zinc-500 font-normal">Admin</span>
+              Casa Certa <span className="text-zinc-500 font-normal">Imóveis</span>
             </Link>
             <nav className="flex items-center gap-3 text-sm">
-              <Link className="rounded-md px-3 py-2 hover:bg-zinc-100" href="/admin/imoveis">
+              {/* <Link className="rounded-md px-3 py-2 hover:bg-zinc-100" href="/admin/imoveis">
                 Imóveis
-              </Link>
+              </Link> */}
               <Link className="rounded-md px-3 py-2 hover:bg-zinc-100" href="/admin/leads">
                 Leads
               </Link>
